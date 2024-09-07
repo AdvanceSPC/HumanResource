@@ -20,7 +20,9 @@ if ("POST".equalsIgnoreCase(request.getMethod())) {
 
         if (rs.next()) {
             if (password.equals(rs.getString("password"))) {
+                String username = rs.getString("username");
                 session.setAttribute("email", email);
+                session.setAttribute("username", username);
                 response.sendRedirect("views/main.jsp");
                 return;
             } else {

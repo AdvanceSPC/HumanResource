@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@ page import="java.sql.*" %>
 <%@ page session="true" %>
 <%
@@ -16,6 +17,7 @@
 
             if (rs.next()) {
                 String name = rs.getString("username");
+                session.setAttribute("name", name);
             } else {
                 out.println("Usuario no encontrado");
             }
@@ -93,7 +95,7 @@
                             <img src="../public/dist/img/userico.png" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">Nombre</a>
+                            <a href="#" class="d-block">${sessionScope.name != null ? sessionScope.name : 'Invitado'}</a>
                         </div>
                     </div>
 
@@ -101,10 +103,18 @@
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             <li class="nav-item menu-open">
-                                <a href="index.jsp" class="nav-link active">
+                                <a href="main.jsp" class="nav-link active">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
                                         Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item menu-open">
+                                <a href="${pageContext.request.contextPath}/DepartmentController" class="nav-link active">
+                                    <i class="nav-icon fas fa-solid fa-building"></i>
+                                    <p>
+                                        Departamentos
                                     </p>
                                 </a>
                             </li>
@@ -121,6 +131,14 @@
                                     <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
                                     <p>
                                         Permisos
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item menu-open">
+                                <a href="${pageContext.request.contextPath}/PayrollController" class="nav-link active">
+                                    <i class="nav-icon fas fa-solid fa-clipboard-list"></i>
+                                    <p>
+                                        Nómina
                                     </p>
                                 </a>
                             </li>
@@ -165,7 +183,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Cumpleañeros del Mes</h3>
                                 <div class="card-tools">
-                                    <span class="badge badge-danger">8 Colaboradores</span>
+                                    <span class="badge badge-danger">${TotalbirthdayEmployees} Colaboradores</span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>

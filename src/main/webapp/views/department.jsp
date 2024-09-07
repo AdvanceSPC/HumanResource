@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="model.Employee"%>
+<%@page import="model.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -181,14 +181,13 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0">Empleados</h1>
-                                <h5>Total Empleados: ${totalEmployee}</h5>
+                                <h1 class="m-0">Departamentos</h1>
                                 <section id="actions" class="py-4 ab-4 bg-light">
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-md-3">
                                                 <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addEmployeeModal">
-                                                    <i class="fas fa-plus"></i> Agregar Empleado
+                                                    <i class="fas fa-plus"></i> Agregar Departamento
                                                 </a>
                                             </div>
                                         </div>
@@ -198,7 +197,7 @@
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="main.jsp">Inicio</a></li>
-                                    <li class="breadcrumb-item active">Empleados</li>
+                                    <li class="breadcrumb-item active">Departamentos</li>
                                 </ol>
                             </div>
                         </div>
@@ -213,9 +212,7 @@
                             <div class="card-header p-2">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#listEmployee"
-                                                            data-toggle="tab">Lista de Empleados</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#inactiveEmployee" data-toggle="tab">Usuarios
-                                            Inactivos</a></li>
+                                                            data-toggle="tab">Lista de Departamentos</a></li>
                                 </ul>
                             </div>
                             <div class="card-body">
@@ -239,61 +236,27 @@
                                                                     <th class="sorting sorting_asc" tabindex="0"
                                                                         aria-controls="example2" aria-sort="ascending"
                                                                         aria-label="Rendering engine: activate to sort column descending">
-                                                                        Cédula</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Nombre: activate to sort column ascending">
                                                                         Nombre</th>
                                                                     <th class="sorting" tabindex="0"
                                                                         aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Apellido: activate to sort column ascending">
-                                                                        Apellido</th>
+                                                                        aria-label="Nombre: activate to sort column ascending">
+                                                                        Descripción</th>
                                                                     <th class="sorting" tabindex="0"
                                                                         aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Fecha Nacimiento: activate to sort column ascending">
-                                                                        Fecha de Nacimiento</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Correo: activate to sort column ascending">
-                                                                        Correo</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Teléfono: activate to sort column ascending">
-                                                                        Teléfono</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Cargo: activate to sort column ascending">
-                                                                        Cargo</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Departamento: activate to sort column ascending">
-                                                                        Departamento</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Salario: activate to sort column ascending">
-                                                                        Salario</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Acción: activate to sort column ascending">
+                                                                        aria-label="Nombre: activate to sort column ascending">
                                                                         Acción</th>
-                                                                </tr>
+                                                                    </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <c:forEach var="employee" items="${employees}">
+                                                                <c:forEach var="department" items="${departments}">
                                                                     <tr>
-                                                                        <td>${employee.id}</td>
-                                                                        <td>${employee.identification}</td>
-                                                                        <td>${employee.name}</td>
-                                                                        <td>${employee.lastName}</td>
-                                                                        <td>${employee.bod}</td>
-                                                                        <td>${employee.email}</td>
-                                                                        <td>${employee.phone}</td>
-                                                                        <td>${employee.position_name}</td>
-                                                                        <td>${employee.department_name}</td>
-                                                                        <td>${employee.salary}</td>
+                                                                        <td>${department.id}</td>
+                                                                        <td>${department.name}</td>
+                                                                        <td>${department.description}</td>
                                                                         <td>
-                                                                            <a href="${pageContext.request.contextPath}/EmployeeController?action=edit&id=${employee.id}" class="btn btn-primary">Editar</a>
-                                                                            <a href="${pageContext.request.contextPath}/EmployeeController?action=delete&id=${employee.id}" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar este empleado?');">Eliminar</a>
+                                                                            <a href="${pageContext.request.contextPath}/DepartmentController?action=edit&id=${department.id}" class="btn btn-primary">Editar</a>
+                                                                            <a href="${pageContext.request.contextPath}/DepartmentController?action=delete&id=${department.id}" class="btn btn-danger" onclick="return confirm('¿Está seguro que desea eliminar este departamento?');">Eliminar</a>
+                                                                            <a href="#" data-toggle="modal" data-target="#addPositionModal" class="btn btn-info">Añadir Puesto</a>
                                                                         </td>
                                                                     </tr>
                                                                 </c:forEach>
@@ -304,92 +267,14 @@
                                             </div>
                                         </div>
                                     </div>
-
-
-                                    <!-- Inactive Employee -->
-                                    <div class="active tab-pane" id="inactiveEmployee">
-                                        <div class="card-body">
-                                            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                                <div class="row">
-                                                    <div class="col-sm-12 col-md-6"></div>
-                                                    <div class="col-sm-12 col-md-6"></div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="inactiveEmployeeTable" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="sorting sorting_asc" tabindex="0"
-                                                                        aria-controls="example2" aria-sort="ascending"
-                                                                        aria-label="Rendering engine: activate to sort column descending">
-                                                                        Id</th>
-                                                                    <th class="sorting sorting_asc" tabindex="0"
-                                                                        aria-controls="example2" aria-sort="ascending"
-                                                                        aria-label="Rendering engine: activate to sort column descending">
-                                                                        Cédula</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Nombre: activate to sort column ascending">
-                                                                        Nombre</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Apellido: activate to sort column ascending">
-                                                                        Apellido</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Fecha Nacimiento: activate to sort column ascending">
-                                                                        Fecha de Nacimiento</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Correo: activate to sort column ascending">
-                                                                        Correo</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Teléfono: activate to sort column ascending">
-                                                                        Teléfono</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Cargo: activate to sort column ascending">
-                                                                        Cargo</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Departamento: activate to sort column ascending">
-                                                                        Departamento</th>
-                                                                    <th class="sorting" tabindex="0"
-                                                                        aria-controls="example2" rowspan="1" colspan="1"
-                                                                        aria-label="Salario: activate to sort column ascending">
-                                                                        Salario</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <c:forEach var="employee" items="${inactiveEmployees}">
-                                                                    <tr>
-                                                                        <td>${employee.id}</td>
-                                                                        <td>${employee.identification}</td>
-                                                                        <td>${employee.name}</td>
-                                                                        <td>${employee.lastName}</td>
-                                                                        <td>${employee.bod}</td>
-                                                                        <td>${employee.email}</td>
-                                                                        <td>${employee.phone}</td>
-                                                                        <td>${employee.position_name}</td>
-                                                                        <td>${employee.department_name}</td>
-                                                                        <td>${employee.salary}</td>
-                                                                    </tr>
-                                                                </c:forEach>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-                                <jsp:include page="addEmployee.jsp" />
+            <jsp:include page="addDepartment.jsp" />
+            <jsp:include page="addPosition.jsp" />
             <footer class="main-footer">
                 <strong>Copyright &copy; 2024 <a href="#">RBN Solutions</a>.</strong>
                 All rights reserved.
@@ -469,17 +354,6 @@
                                                                                         }
                                                                                     });
                                                                                 });
-
-                                                                                /*document.getElementById('profileInput').addEventListener('change', function (event) {
-                                                                                 const file = event.target.files[0];
-                                                                                 if (file) {
-                                                                                 const reader = new FileReader();
-                                                                                 reader.onload = function (e) {
-                                                                                 document.getElementById('profile-pic').src = e.target.result;
-                                                                                 }
-                                                                                 reader.readAsDataURL(file);
-                                                                                 }
-                                                                                 });*/
         </script>
     </div>
 </body>

@@ -1,6 +1,10 @@
 package model;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable{
+    private static final long serialVersionUID = 1L;
+
     private int id;
     private String identification;
     private String name;
@@ -17,9 +21,21 @@ public class Employee {
     public Employee(int id) {
         this.id = id;
     }
-    
-    public Employee(){
-        
+
+    public Employee() {
+
+    }
+
+    public Employee(String identification, String name, String lastName, String bod, String email, String phone, int positionEmployee_id, int department_id, double salary) {
+        this.identification = identification;
+        this.name = name;
+        this.lastName = lastName;
+        this.bod = bod;
+        this.email = email;
+        this.phone = phone;
+        this.positionEmployee_id = positionEmployee_id;
+        this.department_id = department_id;
+        this.salary = salary;
     }
 
     public Employee(int id, String identification, String name, String lastName, String bod, String email, String phone, String position_name, String department_name, double salary) {
@@ -35,16 +51,17 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Employee(String identification, String name, String lastName, String bod, String email, String phone, String position_name, String department_name, double salary) {
+    public Employee(int id, String identification, String name, String lastName, String bod, String email, String phone, int positionEmployee_id, int department_id, double salary) {
+        this.id = id;
         this.identification = identification;
         this.name = name;
         this.lastName = lastName;
         this.bod = bod;
         this.email = email;
         this.phone = phone;
-        this.position_name = position_name;
-        this.department_name = department_name;
         this.salary = salary;
+        this.positionEmployee_id = positionEmployee_id;
+        this.department_id = department_id;
     }
     
     
@@ -145,11 +162,22 @@ public class Employee {
         this.department_id = department_id;
     }
 
-    
     @Override
     public String toString() {
-        return "Employee{" + "id=" + id + ", identification=" + identification + ", name=" + name + ", lastName=" + lastName + ", bod=" + bod + ", email=" + email + ", phone=" + phone + ", position_name=" + position_name + ", department__name=" + department_name + ", salary=" + salary + '}';
+        return "Employee{" + 
+                "id=" + id + 
+                ", identification=" + identification + 
+                ", name=" + name + 
+                ", lastName=" + lastName + 
+                ", bod=" + bod + 
+                ", email=" + email + 
+                ", phone=" + phone + 
+                ", position_name=" + position_name + 
+                ", department_name=" + department_name + 
+                ", salary=" + salary + 
+                ", positionEmployee_id=" + positionEmployee_id + 
+                ", department_id=" + department_id + '}';
     }
-    
+
     
 }

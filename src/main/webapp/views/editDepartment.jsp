@@ -183,11 +183,11 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0">Editar Empleado</h1>
+                                <h1 class="m-0">Editar Departamento</h1>
                                 <section id="actions" class="py-4 mb-4 bg-light">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <a href="views/employee.jsp" class="btn btn-primary btn-block">
+                                            <a href="views/department.jsp" class="btn btn-primary btn-block">
                                                 <i class="fas fa-arrow-left"></i> Regresar a la Lista
                                             </a>
                                         </div>
@@ -197,7 +197,7 @@
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
                                     <li class="breadcrumb-item"><a href="main.jsp">Inicio</a></li>
-                                    <li class="breadcrumb-item active">Empleados</li>
+                                    <li class="breadcrumb-item active">Departamentos</li>
                                 </ol>
                             </div>
                         </div>
@@ -215,54 +215,17 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form action="${pageContext.request.contextPath}/EmployeeController?action=update&id=${employee.id}" method="POST">
+                                <form action="${pageContext.request.contextPath}/DepartmentController?action=update&id=${department.id}" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="identification">Identificación</label>
-                                            <input type="text" class="form-control" id="identification" name="identification" value="${employee.identification}">
-                                        </div>
-                                        <div class="form-group">
                                             <label for="name">Nombre</label>
-                                            <input type="text" class="form-control" id="name" name="name" value="${employee.name}">
+                                            <input type="text" class="form-control" id="name" name="name" value="${department.name}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="lastName">Apellido</label>
-                                            <input type="text" class="form-control" id="lastName" name="lastName" value="${employee.lastName}">
+                                            <label for="description">Description</label>
+                                            <input type="text" class="form-control" id="description" name="description" value="${department.description}">
                                         </div>
-                                        <div class="form-group">
-                                            <label for="bod">Fecha de Nacimiento</label>
-                                            <input type="text" class="form-control" id="bod" name="bod" value="${employee.bod}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email" value="${employee.email}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="phone">Teléfono</label>
-                                            <input type="text" class="form-control" id="phone" name="phone" value="${employee.phone}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="department_id">Departamento</label>
-                                            <input type="text" class="form-control" id="department_id" name="department_id" value="${employee.department_name}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="positionEmployee_id">Cargo</label>
-                                            <input type="text" class="form-control" id="positionEmployee_id" name="positionEmployee_id" value="${employee.position_name}">
-                                        </div>
-                                        <label for="salary">Salario</label>
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">$</span>
-                                            </div>
-                                            <input type="text" class="form-control" value="${employee.salary}" name="salary" id="salary">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.card-body -->
-
-                                    <div class="card-footer">
+                                        <div class="card-footer">
                                         <button type="submit" class="btn btn-primary">Actualizar</button>
                                     </div>
                                 </form>
